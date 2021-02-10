@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 const axios = require("axios");
 
@@ -10,7 +10,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://vinted-juliemahe.herokuapp.com/offers"
+          "https://lereacteur-vinted-api.herokuapp.com/offers"
         );
         setData(response.data);
         setLoading(false);
@@ -28,16 +28,17 @@ const Home = () => {
       ) : (
         <div>
           <div>IMG GIGANTESQUE</div>
-          {data.offers.map((elem, index) => {
-            console.log(elem);
+          {data.offers.map((elem) => {
             return (
-              <div key={elem._id}>
-                {elem.owner.account.avatar && (
-                  <img src={elem.owner.account.avatar.secure_url} alt="" />
-                )}
+              <Link elem={elem} to={`/offer/${elem._id}`}>
+                <div key={elem._id}>
+                  {elem.owner.account.avatar && (
+                    <img src={elem.owner.account.avatar.secure_url} alt="" />
+                  )}
 
-                <img src={elem.product_image.secure_url} alt="" />
-              </div>
+                  <img src={elem.product_image.secure_url} alt="" />
+                </div>
+              </Link>
             );
           })}
         </div>
