@@ -1,0 +1,30 @@
+@import "./reset.scss";
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid lightgrey;
+  padding: 15px 0;
+
+  img {
+    height: 30px;
+    cursor: pointer;
+  }
+  ul {
+    display: flex;
+    li {
+      margin-left: 20px;
+      cursor: pointer;
+    }
+  }
+}
