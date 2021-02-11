@@ -31,7 +31,6 @@ const Home = () => {
           {data.offers.map((elem) => {
             // je récupère la marque du tableau product details pour pouvoir l'afficher plus bas
             const marque = Object.values(elem.product_details[0]);
-            console.log(marque);
             return (
               <Link to={`/offer/${elem._id}`}>
                 <div key={elem._id} className="offerCard">
