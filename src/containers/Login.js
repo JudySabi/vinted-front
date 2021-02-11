@@ -1,31 +1,31 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  // const [data, setData] = useState();
+const Login = ({ setUser }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const history = useHistory();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "https://lereacteur-vinted-api.herokuapp.com/user/login"
+          "https://lereacteur-vinted-api.herokuapp.com/user/login",
+          { email: email, password: password }
         );
-        if (email && password) {
-          const token = response.token;
-          console.log(token);
-        }
+
+        setUser(response.data.token);
+        history.push("/");
       } catch (error) {
-        console.log(error);
+        console.log(error.message);
       }
     };
     fetchData();
   };
-
+  console.log(setUser);
   return (
     <form onSubmit={handleSubmit}>
       <input
