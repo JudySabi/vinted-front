@@ -1,19 +1,20 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Range } from "react-range";
+// import { Range } from "react-range";
 const axios = require("axios");
 
-const Home = () => {
+const Home = ({ filters }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
-  const [minPrice, setMinPrice] = useState(3);
-  const [maxPrice, setMaxPrice] = useState(100);
+  // const [minPrice, setMinPrice] = useState([40]);
+  // const [maxPrice, setMaxPrice] = useState([100]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${filters.search}`
+          // https://lereacteur-vinted-api.herokuapp.com/offers?title=${filters.search}
         );
         setData(response.data);
         setLoading(false);
@@ -22,18 +23,18 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [filters]);
 
   return (
     <div className="home">
       {/* <div>IMG GIGANTESQUE</div> */}
 
-      <div>
+      {/*<div>
         <Range
           step={1}
           min={0}
           max={500}
-          values={minPrice.values}
+          values={[minPrice]}
           onChange={(values) => setMinPrice({ values })}
           renderTrack={({ props, children }) => (
             <div
@@ -60,7 +61,7 @@ const Home = () => {
             />
           )}
         />
-      </div>
+      </div> */}
 
       {loading ? (
         <span>en cours de chargement...</span>

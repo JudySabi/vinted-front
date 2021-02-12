@@ -11,6 +11,7 @@ import SignUp from "./containers/SignUp";
 import Header from "./components/Header";
 
 function App() {
+  // USER - TOKEN & COOKIES
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
 
   const setUser = (token) => {
@@ -23,9 +24,17 @@ function App() {
     }
   };
 
+  // FILTERS
+  const [filters, setFilters] = useState({ search: "" });
+
   return (
     <Router>
-      <Header setUser={setUser} userToken={userToken} />
+      <Header
+        setUser={setUser}
+        userToken={userToken}
+        filters={filters}
+        setFilters={setFilters}
+      />
       <Switch>
         <Route path="/offer/:id">
           <Offer />
@@ -37,7 +46,7 @@ function App() {
           <SignUp setUser={setUser} />
         </Route>
         <Route path="/">
-          <Home />
+          <Home filters={filters} />
         </Route>
       </Switch>
     </Router>
