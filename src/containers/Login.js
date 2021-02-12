@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
@@ -27,19 +27,26 @@ const Login = ({ setUser }) => {
   };
   console.log(setUser);
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        placeholder="Votre mail"
-        onChange={(event) => setEmail(event.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Votre mot de passe"
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      <button type="submit">Se connecter</button>
-    </form>
+    <div className="login">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Adresse email"
+          onChange={(event) => setEmail(event.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <button type="submit">Se connecter</button>
+        <Link to="/user/signup">
+          <span className="linkLogSign">
+            Pas encore de compte ? Inscris-toi !
+          </span>
+        </Link>
+      </form>
+    </div>
   );
 };
 

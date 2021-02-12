@@ -129,4 +129,22 @@ table {
 }
 a {
   text-decoration: none;
+  &:active {
+    color: inherit;
+  }
+  &:visited {
+    color: inherit;
+  }
+  &:link {
+    color: inherit;
+  }
+}
+input:focus {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+button {
+  cursor: pointer;
 }

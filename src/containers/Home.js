@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Range } from "react-range";
 const axios = require("axios");
 
 const Home = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
+  const [minPrice, setMinPrice] = useState(3);
+  const [maxPrice, setMaxPrice] = useState(100);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +27,41 @@ const Home = () => {
   return (
     <div className="home">
       {/* <div>IMG GIGANTESQUE</div> */}
+
+      <div>
+        <Range
+          step={1}
+          min={0}
+          max={500}
+          values={minPrice.values}
+          onChange={(values) => setMinPrice({ values })}
+          renderTrack={({ props, children }) => (
+            <div
+              {...props}
+              style={{
+                ...props.style,
+                height: "6px",
+                width: "100%",
+                backgroundColor: "#ccc",
+              }}
+            >
+              {children}
+            </div>
+          )}
+          renderThumb={({ props }) => (
+            <div
+              {...props}
+              style={{
+                ...props.style,
+                height: "42px",
+                width: "42px",
+                backgroundColor: "#999",
+              }}
+            />
+          )}
+        />
+      </div>
+
       {loading ? (
         <span>en cours de chargement...</span>
       ) : (

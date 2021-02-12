@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const SignUp = () => {
@@ -25,25 +26,32 @@ const SignUp = () => {
   console.log(infosUser);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Choisissez un pseudo"
-        onChange={(event) => setUsername(event.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="Votre mail"
-        onChange={(event) => setEmail(event.target.value)}
-      />
+    <div className="signup">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Choisissez un pseudo"
+          onChange={(event) => setUsername(event.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Adresse email"
+          onChange={(event) => setEmail(event.target.value)}
+        />
 
-      <input
-        type="password"
-        placeholder="Votre mot de passe"
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      <button type="submit">S'inscrire</button>
-    </form>
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <button type="submit">S'inscrire</button>
+        <Link to="/user/login">
+          <span className="linkLogSign">
+            Tu as déjà un compte ? Connecte-toi !
+          </span>
+        </Link>
+      </form>
+    </div>
   );
 };
 
