@@ -26,7 +26,12 @@ function App() {
 
   // FILTERS
 
-  const [filters, setFilters] = useState({ search: "", sortPrice: true });
+  const [filters, setFilters] = useState({
+    search: "",
+    sortPrice: true,
+    priceMin: 0,
+    priceMax: 100,
+  });
 
   return (
     <Router>

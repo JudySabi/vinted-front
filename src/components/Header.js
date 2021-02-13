@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Header = ({ setUser, userToken, filters, setFilters }) => {
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
 
   // onChange de l'input search
   const handleSearch = (event) => {
-    setSearch(event);
     const newFilters = { ...filters };
-    newFilters.search = search;
+    newFilters.search = event;
     setFilters(newFilters);
   };
   // console.log(search);
@@ -22,7 +21,7 @@ const Header = ({ setUser, userToken, filters, setFilters }) => {
       <input
         type="text"
         placeholder="Rechercher des articles"
-        value={search}
+        value={filters.search}
         onChange={(elem) => handleSearch(elem.target.value)}
       />
       <div>
