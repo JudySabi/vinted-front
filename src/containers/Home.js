@@ -9,14 +9,16 @@ const Home = ({ filters, setFilters }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const sortAscDesc = filters.sortPrice ? "price-asc" : "price-desc"; // permet de mettre le query correspondant a true ou a false
+  console.log(sortAscDesc); // me retourne 3 console.log dans ma console ??
 
-  console.log(sortAscDesc);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sortAscDesc}`
-          // https://lereacteur-vinted-api.herokuapp.com/offers?title=${filters.search}
+          `https://lereacteur-vinted-api.herokuapp.com/offers`
+          // `https://lereacteur-vinted-api.herokuapp.com/offers?priceMin=${filters.priceMin}&priceMax=${filters.priceMax}`
+          // `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sortAscDesc}`
+          // `https://lereacteur-vinted-api.herokuapp.com/offers?title=${filters.search}`
         );
         setData(response.data);
         setLoading(false);
