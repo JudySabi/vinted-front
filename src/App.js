@@ -25,7 +25,8 @@ function App() {
   };
 
   // FILTERS
-  const [filters, setFilters] = useState({ search: "" });
+
+  const [filters, setFilters] = useState({ search: "", sortPrice: true });
 
   return (
     <Router>
@@ -46,7 +47,7 @@ function App() {
           <SignUp setUser={setUser} />
         </Route>
         <Route path="/">
-          <Home filters={filters} />
+          <Home filters={filters} setFilters={setFilters} />
         </Route>
       </Switch>
     </Router>

@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import { Range } from "react-range";
+// COMPONENTS
+import IdOffer from "../components/IdOffer";
+import Filters from "../components/Filters";
 const axios = require("axios");
 
-const Home = ({ filters }) => {
+const Home = ({ filters, setFilters }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
-  // const [minPrice, setMinPrice] = useState([40]);
-  // const [maxPrice, setMaxPrice] = useState([100]);
+  const sortAscDesc = filters.sortPrice ? "price-asc" : "price-desc"; // permet de mettre le query correspondant a true ou a false
 
+  console.log(sortAscDesc);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${filters.search}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sortAscDesc}`
           // https://lereacteur-vinted-api.herokuapp.com/offers?title=${filters.search}
         );
         setData(response.data);
@@ -26,70 +28,30 @@ const Home = ({ filters }) => {
   }, [filters]);
 
   return (
-    <div className="home">
+    <>
       {/* <div>IMG GIGANTESQUE</div> */}
+      {/* <div>BANDEAU FILTERS</div> */}
+      {/* <Link to={`/offer?sort=${filters.sort}`}> */}
+      <Filters filters={filters} setFilters={setFilters} />
+      {/* </Link> */}
 
-      {/*<div>
-        <Range
-          step={1}
-          min={0}
-          max={500}
-          values={[minPrice]}
-          onChange={(values) => setMinPrice({ values })}
-          renderTrack={({ props, children }) => (
-            <div
-              {...props}
-              style={{
-                ...props.style,
-                height: "6px",
-                width: "100%",
-                backgroundColor: "#ccc",
-              }}
-            >
-              {children}
-            </div>
-          )}
-          renderThumb={({ props }) => (
-            <div
-              {...props}
-              style={{
-                ...props.style,
-                height: "42px",
-                width: "42px",
-                backgroundColor: "#999",
-              }}
-            />
-          )}
-        />
-      </div> */}
-
-      {loading ? (
-        <span>en cours de chargement...</span>
-      ) : (
-        <>
-          {data.offers.map((elem) => {
-            // je récupère la marque du tableau product details pour pouvoir l'afficher plus bas
-            const marque = Object.values(elem.product_details[0]);
-            return (
-              <Link to={`/offer/${elem._id}`}>
-                <div key={elem._id} className="offerCard">
-                  <div className="user">
-                    {elem.owner.account.avatar && (
-                      <img src={elem.owner.account.avatar.secure_url} alt="" />
-                    )}
-                    <p>{elem.owner.account.username}</p>
-                  </div>
-
-                  <img src={elem.product_image.secure_url} alt="" />
-                  <p>{elem.product_price} €</p>
-                  <p>{marque}</p>
-                </div>
-              </Link>
-            );
-          })}
-        </>
-      )}
-    </div>
+      {/* Permet de m'envoyer le résultat lors du clique sur une annonce */}
+      <div className="homeOffer">
+        {loading ? (
+          <span>en cours de chargement...</span>
+        ) : (
+          <>
+            {data.offers.map((elem) => {
+              return (
+                <Link to={`/offer/${elem._id}`}>
+                  <IdOffer elem={elem} />
+                </Link>
+              );
+            })}
+          </>
+        )}
+      </div>
+    </>
   );
 };
 export default Home;
