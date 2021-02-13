@@ -1,12 +1,11 @@
-import { Range, getTrackBackground } from "react-range";
-import { useState } from "react";
+// import { Range, getTrackBackground } from "react-range";
+// import { useState } from "react";
 
 const Filters = ({ filters, setFilters, rtl }) => {
   //   const [checkBox, setCheckbox] = useState(true);
   //   const [minPrice, setMinPrice] = useState([40]);
-  const [priceMinMax, setPriceMinMax] = useState([0, 100]);
   //   const [maxPrice, setMaxPrice] = useState([100]);
-  const [values, setValues] = useState([1, 100]);
+  //   const [priceMinMax, setPriceMinMax] = useState([0, 100]);
 
   const handleCheckbox = (event) => {
     const newFilters = { ...filters };
@@ -33,14 +32,14 @@ const Filters = ({ filters, setFilters, rtl }) => {
 
       {/* PRICE MIN - MAX */}
       <div className="price-min-max">
-        <Range
-          values={values}
+        {/* <Range
+          values={priceMinMax}
           step={1}
           min={0}
           max={100}
           rtl={rtl}
           onChange={(values) => {
-            setValues(values);
+            setPriceMinMax(values);
             const newfilters = { ...filters };
             newfilters.priceMin = priceMinMax[0];
             newfilters.priceMax = priceMinMax[1];
@@ -65,7 +64,7 @@ const Filters = ({ filters, setFilters, rtl }) => {
                   width: "100%",
                   borderRadius: "4px",
                   background: getTrackBackground({
-                    values,
+                    priceMinMax,
                     colors: ["#ccc", "#2CB1BA", "#ccc"],
                     min: 0,
                     max: 100,
@@ -106,11 +105,11 @@ const Filters = ({ filters, setFilters, rtl }) => {
                   backgroundColor: "rgb(44, 177, 186)",
                 }}
               >
-                {values[index]}
+                {priceMinMax[index]}
               </div>
             </div>
           )}
-        />
+        /> */}
         {/* <Range
           step={1}
           min={0}
