@@ -1,11 +1,13 @@
-// import { Range, getTrackBackground } from "react-range";
-// import { useState } from "react";
+import { Range, getTrackBackground } from "react-range";
+import { useState } from "react";
 
-const Filters = ({ filters, setFilters, rtl }) => {
+const Filters = ({ rtl, filters, setFilters }) => {
   //   const [checkBox, setCheckbox] = useState(true);
   //   const [minPrice, setMinPrice] = useState([40]);
   //   const [maxPrice, setMaxPrice] = useState([100]);
-  //   const [priceMinMax, setPriceMinMax] = useState([0, 100]);
+    // const [priceMinMax, setPriceMinMax] = useState([0, 100]);
+  // const [values, setValues] = useState([1, 100]);
+
 
   const handleCheckbox = (event) => {
     const newFilters = { ...filters };
@@ -40,10 +42,10 @@ const Filters = ({ filters, setFilters, rtl }) => {
           rtl={rtl}
           onChange={(values) => {
             setPriceMinMax(values);
-            const newfilters = { ...filters };
-            newfilters.priceMin = priceMinMax[0];
-            newfilters.priceMax = priceMinMax[1];
-            setFilters(newfilters);
+            const newFilters = { ...filters };
+            newFilters.priceMin = priceMinMax[0]; // premier curseur
+            newFilters.priceMax = priceMinMax[1]; // deuxième curseur
+            setFilters(newFilters);
           }}
           renderTrack={({ props, children }) => (
             <div
@@ -88,7 +90,7 @@ const Filters = ({ filters, setFilters, rtl }) => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                boxShadow: "0px 2px 6px #fff",
+                // boxShadow: "0px 2px 6px #fff",
                 border: ".5px solid #fff",
                 borderRadius: "50%",
                 outline: "none",

@@ -7,6 +7,7 @@ import Offer from "./containers/Offer";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import SignUp from "./containers/SignUp";
+import Publish from "./containers/Publish";
 // COMPONENTS
 import Header from "./components/Header";
 
@@ -42,6 +43,9 @@ function App() {
         setFilters={setFilters}
       />
       <Switch>
+        <Route path="/publish">
+          <Publish userToken={userToken} />
+        </Route>
         <Route path="/offer/:id">
           <Offer />
         </Route>
@@ -52,7 +56,11 @@ function App() {
           <SignUp setUser={setUser} />
         </Route>
         <Route path="/">
-          <Home filters={filters} setFilters={setFilters} />
+          <Home
+            filters={filters}
+            setFilters={setFilters}
+            userToken={userToken}
+          />
         </Route>
       </Switch>
     </Router>

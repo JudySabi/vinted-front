@@ -36,7 +36,10 @@ const Header = ({ setUser, userToken, filters, setFilters }) => {
               <Link to="/user/login">Se connecter</Link>
             </>
           )}
-          <button>Vends tes articles</button>
+          {/* faire si l'utilisateur n'est pas connecté alors il passe sur la page login */}
+          <Link to="/publish">
+            <button>Vends tes articles</button>
+          </Link>
         </nav>
       </div>
     </div>

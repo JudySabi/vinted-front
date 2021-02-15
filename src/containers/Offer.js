@@ -29,7 +29,10 @@ const Offer = () => {
         <span>en cours de chargement...</span>
       ) : (
         <div className="offer">
+          {/* ERREUR VIENT D'ICI SELON LA CONSOLE */}
+
           <img src={data.product_image.secure_url} alt="" />
+
           <div className="card">
             <div className="topCard">
               <p>{data.product_price} €</p>
@@ -53,7 +56,10 @@ const Offer = () => {
               <p>{data.product_description}</p>
 
               <div className="user">
-                <img src={data.owner.account.avatar.secure_url} alt="" />
+                {/* si la personne n'a pas d'avatar */}
+                {data.owner.account.avatar && (
+                  <img src={data.owner.account.avatar.secure_url} alt="" />
+                )}
                 <p>{data.owner.account.username}</p>
               </div>
               <button>Acheter</button>

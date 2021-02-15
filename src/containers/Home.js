@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 // COMPONENTS
 import IdOffer from "../components/IdOffer";
 import Filters from "../components/Filters";
+import HeroHeader from "../components/HeroHeader";
 const axios = require("axios");
 
-const Home = ({ filters, setFilters }) => {
+const Home = ({ filters, setFilters, userToken }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const sortAscDesc = filters.sortPrice ? "price-asc" : "price-desc"; // permet de mettre le query correspondant a true ou a false
@@ -31,10 +32,12 @@ const Home = ({ filters, setFilters }) => {
 
   return (
     <>
-      {/* <div>IMG GIGANTESQUE</div> */}
-      {/* <div>BANDEAU FILTERS</div> */}
-      {/* <Link to={`/offer?sort=${filters.sort}`}> */}
       <Filters filters={filters} setFilters={setFilters} />
+      {/* <div>BANDEAU FILTERS</div> */}
+      <HeroHeader userToken={userToken} />
+
+      {/* <Link to={`/offer?sort=${filters.sort}`}> */}
+
       {/* </Link> */}
 
       {/* Permet de m'envoyer le résultat lors du clique sur une annonce */}

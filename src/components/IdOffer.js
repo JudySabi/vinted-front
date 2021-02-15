@@ -10,7 +10,11 @@ const IdOffer = ({ elem }) => {
         <p>{elem.owner.account.username}</p>
       </div>
 
-      <img src={elem.product_image.secure_url} alt="" />
+      <img
+        className="product-image"
+        src={elem.product_image.secure_url}
+        alt=""
+      />
       <p>{elem.product_price} €</p>
       <p>{marque}</p>
     </div>
