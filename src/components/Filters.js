@@ -5,9 +5,8 @@ const Filters = ({ rtl, filters, setFilters }) => {
   //   const [checkBox, setCheckbox] = useState(true);
   //   const [minPrice, setMinPrice] = useState([40]);
   //   const [maxPrice, setMaxPrice] = useState([100]);
-    // const [priceMinMax, setPriceMinMax] = useState([0, 100]);
+  // const [priceMinMax, setPriceMinMax] = useState([0, 100]);
   // const [values, setValues] = useState([1, 100]);
-
 
   const handleCheckbox = (event) => {
     const newFilters = { ...filters };
@@ -17,6 +16,8 @@ const Filters = ({ rtl, filters, setFilters }) => {
   };
 
   return (
+    <></>
+    /* 
     <div className="filters">
       <p>Trier par :</p>
       <div className="switch">
@@ -32,7 +33,7 @@ const Filters = ({ rtl, filters, setFilters }) => {
         </label>
       </div>
 
-      {/* PRICE MIN - MAX */}
+
       <div className="price-min-max">
         {/* <Range
           values={priceMinMax}
@@ -111,8 +112,8 @@ const Filters = ({ rtl, filters, setFilters }) => {
               </div>
             </div>
           )}
-        /> */}
-        {/* <Range
+        /> 
+        <Range
           step={1}
           min={0}
           max={500}
@@ -142,9 +143,10 @@ const Filters = ({ rtl, filters, setFilters }) => {
               }}
             />
           )}
-        /> */}
+        /> 
       </div>
     </div>
+    */
   );
 };
 

@@ -12,14 +12,16 @@ const Home = ({ filters, setFilters, userToken }) => {
   const sortAscDesc = filters.sortPrice ? "price-asc" : "price-desc"; // permet de mettre le query correspondant a true ou a false
   //console.log(sortAscDesc); // me retourne 3 console.log dans ma console ??
 
+  // const { filters } = useParams();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers`
+          // `https://lereacteur-vinted-api.herokuapp.com/offers`
           // `https://lereacteur-vinted-api.herokuapp.com/offers?priceMin=${filters.priceMin}&priceMax=${filters.priceMax}`
           // `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sortAscDesc}`
-          // `https://lereacteur-vinted-api.herokuapp.com/offers?title=${filters.search}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${filters.search}`
         );
         setData(response.data);
         setLoading(false);
@@ -35,10 +37,6 @@ const Home = ({ filters, setFilters, userToken }) => {
       <Filters filters={filters} setFilters={setFilters} />
       {/* <div>BANDEAU FILTERS</div> */}
       <HeroHeader userToken={userToken} />
-
-      {/* <Link to={`/offer?sort=${filters.sort}`}> */}
-
-      {/* </Link> */}
 
       {/* Permet de m'envoyer le résultat lors du clique sur une annonce */}
       <div className="homeOffer">

@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 const token = Cookies.get("userToken");
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ title, amount }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [succeeded, setSucceeded] = useState(false);
@@ -23,12 +23,12 @@ const CheckoutForm = () => {
         "https://lereacteur-vinted-api.herokuapp.com/payment",
         {
           token: stripeToken,
-          title: "title",
-          amount: 1000,
+          title: title,
+          amount: amount,
         }
       );
       console.log(response.data.status);
-      if (response.data.status === "succeedeed") {
+      if (response.data.status === "succeeded") {
         setSucceeded(true);
       }
     } catch (error) {
@@ -40,6 +40,8 @@ const CheckoutForm = () => {
     <>
       {!succeeded ? (
         <form onSubmit={handleSubmit}>
+          <p>{title}</p>
+          <p>{amount} €</p>
           {/* Input avec le numéro de CB + CCV */}
           <CardElement />
           <button type="submit">Valider</button>
