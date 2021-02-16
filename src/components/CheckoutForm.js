@@ -9,6 +9,10 @@ const CheckoutForm = ({ title, amount }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [succeeded, setSucceeded] = useState(false);
+  const price = Number.parseFloat(amount).toFixed(2);
+  const fraisProtection = Number.parseFloat((price * 10) / 100).toFixed(2);
+  const fraisPort = Number.parseFloat((price * 20) / 100).toFixed(2);
+  const total = Number(price) + Number(fraisPort) + Number(fraisProtection);
 
   const handleSubmit = async (event) => {
     try {
@@ -40,11 +44,36 @@ const CheckoutForm = ({ title, amount }) => {
     <>
       {!succeeded ? (
         <form onSubmit={handleSubmit}>
-          <p>{title}</p>
-          <p>{amount} €</p>
-          {/* Input avec le numéro de CB + CCV */}
+          <h3>Résumé de la commande</h3>
+          <div className="resume-commande">
+            <div>
+              <p>Commande</p> <span>{price} €</span>
+            </div>
+            <div>
+              <p>Frais protection acheteurs</p>
+              <span>{fraisProtection} €</span>
+            </div>
+            <div>
+              <p>Frais de port</p> <span>{fraisPort} €</span>
+            </div>
+          </div>
+          <div className="total">
+            <div>
+              <div>
+                <p>Total</p>
+                <span>{total} €</span>
+              </div>
+
+              <p className="phrase-final">
+                Il ne vous reste plus qu'un étape pour vous offrir{" "}
+                <span>{title}</span>. Vous allez payer <span>{total} € </span>
+                (frais de protection et frais de port inclus).
+              </p>
+            </div>
+          </div>
+
           <CardElement />
-          <button type="submit">Valider</button>
+          <button type="submit">Payer</button>
         </form>
       ) : (
         <span>Paiement validé !</span>
