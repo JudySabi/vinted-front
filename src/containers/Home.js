@@ -10,7 +10,7 @@ const Home = ({ filters, setFilters, userToken }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const sortAscDesc = filters.sortPrice ? "price-asc" : "price-desc"; // permet de mettre le query correspondant a true ou a false
-  console.log(sortAscDesc); // me retourne 3 console.log dans ma console ??
+  //console.log(sortAscDesc); // me retourne 3 console.log dans ma console ??
 
   useEffect(() => {
     const fetchData = async () => {

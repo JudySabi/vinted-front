@@ -27,8 +27,8 @@ const CheckoutForm = () => {
           amount: 1000,
         }
       );
-      console.log(response.status);
-      if (response.data.status === "succeeded") {
+      console.log(response.data.status);
+      if (response.data.status === "succeedeed") {
         setSucceeded(true);
       }
     } catch (error) {
@@ -45,7 +45,7 @@ const CheckoutForm = () => {
           <button type="submit">Valider</button>
         </form>
       ) : (
-        <span>{succeeded}</span>
+        <span>Paiement validé !</span>
       )}
     </>
   );
