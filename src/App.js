@@ -2,12 +2,14 @@ import "./assets/scss/style.scss";
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cookies from "js-cookie";
+
 // CONTAINERS
 import Offer from "./containers/Offer";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import SignUp from "./containers/SignUp";
 import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 // COMPONENTS
 import Header from "./components/Header";
 
@@ -48,6 +50,9 @@ function App() {
         </Route>
         <Route path="/offer/:id">
           <Offer />
+        </Route>
+        <Route path="/payment">
+          <Payment />
         </Route>
         <Route path="/user/login">
           <Login setUser={setUser} />

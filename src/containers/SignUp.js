@@ -30,6 +30,7 @@ const SignUp = () => {
           formData
         );
         setInfosUser(response.data);
+        setIsLoading(true);
         history.push("/");
       } catch (error) {
         console.log(error.message);

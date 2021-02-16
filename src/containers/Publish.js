@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const Publish = ({ userToken }) => {
   const [file, setFile] = useState();
+  const [filePreview, setFilePreview] = useState();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -65,6 +66,7 @@ const Publish = ({ userToken }) => {
               type="file"
               onChange={(event) => {
                 setFile(event.target.files[0]);
+                setFilePreview(URL.createObjectURL(event.target.files[0]));
               }}
             />
           </div>

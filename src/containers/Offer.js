@@ -1,5 +1,8 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+
+// PAYMENT :
+// Récupère la clé publique du réacteur
 const axios = require("axios");
 
 const Offer = () => {
@@ -62,7 +65,9 @@ const Offer = () => {
                 )}
                 <p>{data.owner.account.username}</p>
               </div>
-              <button>Acheter</button>
+              <Link to={{ pathname: "/payment", state: data }}>
+                <button>Acheter</button>
+              </Link>
             </div>
           </div>
         </div>
