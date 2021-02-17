@@ -12,7 +12,9 @@ const CheckoutForm = ({ title, amount }) => {
   const price = Number.parseFloat(amount).toFixed(2);
   const fraisProtection = Number.parseFloat((price * 10) / 100).toFixed(2);
   const fraisPort = Number.parseFloat((price * 20) / 100).toFixed(2);
-  const total = Number(price) + Number(fraisPort) + Number(fraisProtection);
+  const total = parseFloat(
+    Number(price) + Number(fraisPort) + Number(fraisProtection)
+  ).toFixed(2);
 
   const handleSubmit = async (event) => {
     try {

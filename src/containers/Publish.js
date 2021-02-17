@@ -59,16 +59,20 @@ const Publish = ({ userToken }) => {
       <form onSubmit={handleSubmit}>
         <div className="white-bloc file-upload">
           <div>
-            <label htmlFor="file-upload"> Ajouter une photo</label>
-            <input
-              id="file-upload"
-              style={{ visibility: "hidden" }}
-              type="file"
-              onChange={(event) => {
-                setFile(event.target.files[0]);
-                setFilePreview(URL.createObjectURL(event.target.files[0]));
-              }}
-            />
+            <label htmlFor="file-upload">
+              <p>
+                <span>+ </span>Ajouter une photo
+              </p>
+              <input
+                id="file-upload"
+                style={{ visibility: "hidden" }}
+                type="file"
+                onChange={(event) => {
+                  setFile(event.target.files[0]);
+                  setFilePreview(URL.createObjectURL(event.target.files[0]));
+                }}
+              />
+            </label>
           </div>
         </div>
         <div className="white-bloc title">
