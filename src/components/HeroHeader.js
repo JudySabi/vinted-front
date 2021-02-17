@@ -21,7 +21,7 @@ const HeroHeader = ({ userToken }) => {
             </Link>
           )}
         </div>
-        <img className="bandeauSVG" src={bandeauSVG} alt={bandeauSVG} />
+        {/* <img className="bandeauSVG" src={bandeauSVG} alt={bandeauSVG} /> */}
       </div>
     </>
   );
